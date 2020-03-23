@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+	<canvas id="myCanvas" width="400" height="400" style="border:1px solid #000000;">
+
+	</canvas>
+	<script>
+		var canvas = document.getElementById("myCanvas");
+		var ctx = canvas.getContext("2d");
+		ctx.fillStyle = "#34D5F9";
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+		ctx.fill();
+		ctx.translate(canvas.width / 2, canvas.height / 2);
+		drawClock();
+		function drawClock() {
+			drawCircle();
+			drawNum();
+		}
+
+		function drawCircle() {
+			ctx.beginPath();
+			ctx.fillStyle = "#FFFFFF";
+			ctx.arc(0, 0, canvas.height * 0.45, 0, 2 * Math.PI);
+			ctx.fill();
+			ctx.beginPath();
+			ctx.arc(0, 0, canvas.height * 0.05, 0, 2 * Math.PI);
+			ctx.fillStyle = '#FF0000';
+			ctx.fill();
+			ctx.beginPath();
+			ctx.arc(0, 0, canvas.height * 0.025, 0, 2 * Math.PI);
+			ctx.fillStyle = '#FFFF00';
+			ctx.fill();
+
+
+
+		}
+
+		function drawNum() {
+			ctx.beginPath();
+			//ctx.fillStyle = '#000000';
+			//ctx.fillRect(0, 0, 100, 50);
+			//ctx.fillStyle = '#000000';
+			let ang;
+			let raduis = canvas.width / 2;
+			//ctx.fill();
+			ctx.font = radius * 0.15 + "px arial";
+			ctx.textBaseline = "middle";
+			ctx.textAlign = "center";
+			for (num = 1; num < 13; num++) {
+				ctx.beginPath();
+				ang = num * Math.PI / 6;
+				ctx.rotate(ang);
+				ctx.translate(0, -radius * 0.85);
+				ctx.rotate(-ang);
+				ctx.fillText(num.toString(), 0, 0);
+				ctx.fillStyle = '#000000';
+				ctx.fillRect(0, 0, 100, 50);
+				ctx.fillStyle = '#000000';
+				ctx.fill();
+				// ctx.rotate(ang);
+				// ctx.translate(0, radius * 0.85);
+				// ctx.rotate(-ang);
+			}
+		}
+	</script>
+</body>
+
+</html>
