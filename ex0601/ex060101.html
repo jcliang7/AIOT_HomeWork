@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body><!-- Load TensorFlow.js. This is required to use MobileNet. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
+<!-- Load the MobileNet model. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0"> </script>
+<!-- Replace this with your image. Make sure CORS settings allow reading the image! -->
+<!-- cat -->
+<!-- <img id="img" src="https://2rdnmg1qbg403gumla1v9i2h-wpengine.netdna-ssl.com/wp-content/uploads/sites/3/2020/04/petCoronovirus-DG-042320-770x553-1-745x490.jpg" crossorigin='anonymous'></img> -->
+<!-- horse -->
+<img id="img" src="https://ichef.bbci.co.uk/news/800/cpsprodpb/160B4/production/_103229209_horsea.png" crossorigin='anonymous'></img>
+<!-- Place your code in the script tag below. You can also use an external .js file -->
+
+<script>
+// Notice there is no 'import' statement. 'mobilenet' and 'tf' is // available on the index-page because of the scripttag above.
+const img = document.getElementById('img');
+// Load the model.
+mobilenet.load().then(model => {
+// Classify the image.
+model.classify(img).then(predictions => { console.log('Predictions: '); console.log(predictions); }); });
+</script>
+</body>
+</html>
